@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  ros1_bridge:
+    build:
+      context: .
+    container_name: ros_bridge_container
+
+    volumes:
+      - ./src/ros1_bridge:/home/ros2/ros2_ws/src/ros1_bridge
+    network_mode: host
+    tty: true
+    environment:
+      - ROS_MASTER_URI=http://localhost:11311
+      - ROS1_DISTRO=noetic
+      - ROS2_DISTRO=galactic
