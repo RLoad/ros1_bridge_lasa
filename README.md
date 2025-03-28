@@ -8,3 +8,8 @@ docker exec -it ros_bridge_container bash
 
 It should automatically run the roslaunch but if zou interuppt you can run :
 ros2 run ros1_bridge static_bridge
+
+
+# T tell me
+* just docker compose build
+* then docker compose up
