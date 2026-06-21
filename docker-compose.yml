@@ -8,8 +8,12 @@ services:
     volumes:
       - ./src/ros1_bridge:/home/ros2/ros2_ws/src/ros1_bridge
     network_mode: host
+    # FastDDS 同主机默认走共享内存传输；与 wujihand_dev (ipc: host) 互通必须共享 IPC namespace
+    ipc: host
     tty: true
     environment:
       - ROS_MASTER_URI=http://localhost:11311
       - ROS1_DISTRO=noetic
       - ROS2_DISTRO=galactic
+      # galactic 默认 CycloneDDS，humble 默认 FastDDS —— 必须统一 RMW 才互通
+      - RMW_IMPLEMENTATION=rmw_fastrtps_cpp
